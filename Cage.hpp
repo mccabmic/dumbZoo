@@ -1,3 +1,9 @@
+/*************************
+Author:Michael McCabe
+Date: Janaury 19, 2018
+IDE: Visual Studio
+**************************/
+
 #include <iostream>
 #include <stdexcept>
 #include <algorithm> //std::remove
@@ -59,7 +65,6 @@ template <class T>
 void Cage<T>::killAnimal() {
 	if (cageSize > 0) {
 		cageSize--;
-		cage[cageSize].~T();
 	}
 }
 
@@ -69,7 +74,6 @@ void Cage<T>::killAnimal(size_t specific) {
 		for (size_t i = specific; i < cageSize; i++) {
 			cage[i] = cage[i + 1];
 		}
-
 		killAnimal();
 	}
 }
