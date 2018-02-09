@@ -1,6 +1,6 @@
 /*************************
 Author:Michael McCabe
-Date: Janaury 19, 2018
+Date: February 2018
 IDE: Visual Studio
 **************************/
 
@@ -19,7 +19,7 @@ private:
 	size_t cageMax = 10;
 	T* cage;
 
-	void addMoreRoom(int extraRoom);
+	void addMoreRoom(int extraRoom); //dynamically expands room for array
 
 public:
 	Cage();
@@ -32,7 +32,7 @@ public:
 	int getCageSize();
 	int returnCageMax();
 
-	T& operator[] (const int i);
+	T& operator[] (const int i); // very basic error checking
 	~Cage();
 };
 
@@ -49,13 +49,13 @@ void Cage<T>::addMoreRoom(int extraRoom) {
 
 template <class T>
 Cage<T>::Cage() {
-	cage = new T[cageMax];
+	cage = new T[cageMax]; // reserve 10 spaces for cage
 }
 
 template <class T>
 void Cage<T>::addAnimal(T newAnimal) {
 	if (cageSize >= cageMax) {
-		addMoreRoom(cageMax * 2);
+		addMoreRoom(cageMax * 2); // add more capacity of array is at max
 	}
 	cage[cageSize] = newAnimal;
 	cageSize = cageSize + 1;
@@ -64,7 +64,7 @@ void Cage<T>::addAnimal(T newAnimal) {
 template <class T>
 void Cage<T>::killAnimal() {
 	if (cageSize > 0) {
-		cageSize--;
+		cageSize--; // i should look into destroying the underlying object
 	}
 }
 
@@ -72,7 +72,7 @@ template <class T>
 void Cage<T>::killAnimal(size_t specific) {
 	if (cageSize > 0) {
 		for (size_t i = specific; i < cageSize; i++) {
-			cage[i] = cage[i + 1];
+			cage[i] = cage[i + 1]; // shifts the animal to kill all the way to the end of array
 		}
 		killAnimal();
 	}
@@ -81,7 +81,7 @@ void Cage<T>::killAnimal(size_t specific) {
 template <class T>
 T Cage<T>::getAnimal(size_t i) {
 	if (i < 0 || i > cageSize) {
-		throw std::out_of_range("Selected item not found");
+		throw std::out_of_range("Selected item not found"); // first time using these
 	}
 	if (cageSize > 0)
 		return cage[i];
@@ -103,7 +103,7 @@ T& Cage<T>::operator[] (const int i) {
 		return cage[i];
 	}
 	catch (std::out_of_range &e) {
-		cout << "Caught exception: " << e.what() << endl;
+		cout << "Caught exception: " << e.what() << endl; // first time using these
 	}
 }
 
