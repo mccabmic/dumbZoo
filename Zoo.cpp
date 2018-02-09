@@ -3,6 +3,7 @@
 /*Zoo Constructor*/
 Zoo::Zoo(){
 	int money = 100000;
+	bonus = 0;
 	bankrupt = false;
 	days = 0;
 
@@ -29,18 +30,44 @@ Zoo::Zoo(){
 }
 
 void Zoo::buyAnimals() {
+
+	if (days == 0) {
+		cout << "new set up" << endl;
+	}
+
+	else {
+
+	}
+	Tiger newTiger;
+	tigerExhibit.addAnimal(newTiger);
+
+	Turtle newTurtle;
+	turtleExhibit.addAnimal(newTurtle);
+
+	Penguin newPenguin;
+	penguinExhibit.addAnimal(newPenguin);
 	// If Days is 0, then new Zoo setup
+	
 	// So add 1 day old animals
 	// Otherwise add 3 day old animals.
 }
 
 void Zoo::Play() {
+	
+	menu MainMenu;
+	// while prompt == go ahead and play
+	MainMenu.prompt();
+	buyAnimals();
 	// BuyAnimals
 	// AgeAnimals
 	ageZoo();
 	randomEvent();
 	money = getProfit() + bonus;
+	bonus = 0;
 	// Calculate Profit and add it to the bank
+	// loop back, ask if they want to buy ONE animal, adult.  3 days old.  
+	// after that day official ends. ask them if they want to keep playing if they have money
+	// if they dom't have money, end the game
 }
 bool Zoo::getBankruptcyStatus() {
 	return (bankrupt);

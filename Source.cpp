@@ -15,8 +15,7 @@ int main(){
 	// While not bankrupt, progress the game.  So it'll just loop Zoo.Play(). Zoo.Play will ask the user to buy animals.
 
 	while (input == 'y'){
-
-				
+		LincolnParkZoo.Play();				
 	}
 	
 	LincolnParkZoo.~Zoo();

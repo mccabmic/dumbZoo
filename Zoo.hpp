@@ -10,6 +10,8 @@ IDE: Visual Studio
 // Custom vector class
 #include "Cage.hpp"
 
+#include "menu.hpp"
+
 // Animals
 #include "Penguin.hpp"
 #include "Tiger.hpp"
